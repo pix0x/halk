@@ -1,0 +1,10 @@
+*.log
+*.bak
+*.sql
+*.md
+composer.json
+composer.lock
+package.json
+yarn.lock
+pnpm-lock.yaml
+.htaccess.txt
