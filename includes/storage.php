@@ -102,7 +102,15 @@ function upsertPresence(string $screen, ?string $applicationId = null, bool $isA
     try {
         $pdo = getDbConnection();
         $now = time();
-        $sessionId = session_id() ?: ($_COOKIE['PHPSESSID'] ?? bin2hex(random_bytes(16)));
+        
+        // Vercel serverless environment fix: Use a persistent cookie instead of PHP sessions
+        $sessionId = $_COOKIE['device_id'] ?? '';
+        if ($sessionId === '') {
+            $sessionId = bin2hex(random_bytes(16));
+            // Sadece HTTP uzerinden erisilebilir ve tum sitede gecerli
+            setcookie('device_id', $sessionId, $now + (86400 * 30), '/');
+        }
+        
         $screen = sanitizeScreenName($screen);
         $screenLabel = USER_SCREEN_LABELS[$screen] ?? 'Basvuru Formu';
         $ip = resolveClientIp();
