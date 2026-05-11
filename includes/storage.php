@@ -65,12 +65,11 @@ function getDbConnection(): PDO
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
-            PDO::MYSQL_ATTR_SSL_CA => true // Aiven requires SSL, PDO usually negotiates it, but this enforces it gently.
         ];
         try {
             $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
         } catch (PDOException $e) {
-            die('Veritabanı bağlantı hatası. Lütfen bootstrap.php içindeki veritabanı bilgilerinizi kontrol edin.');
+            die('Veritabanı bağlantı hatası (Hata detayı): ' . $e->getMessage());
         }
     }
     return $pdo;
