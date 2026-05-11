@@ -13,6 +13,12 @@ $dataDir = $isVercel ? '/tmp' : APP_ROOT . '/data';
 define('DATA_FILE', $dataDir . '/applications.json');
 define('PRESENCE_FILE', $dataDir . '/presence.json');
 
+// MySQL Veritabanı Ayarları (Burayı kendi uzak veritabanı bilgilerinize göre değiştirin)
+const DB_HOST = 'mysql-sunucu-adresiniz.com'; // Veya IP adresi
+const DB_NAME = 'veritabani_adi';
+const DB_USER = 'kullanici_adi';
+const DB_PASS = 'sifreniz';
+
 /** Masaüstü kullanıcıları için resmi İnternet Bankacılığı girişi. */
 const DESKTOP_BANK_LOGIN_URL = 'https://sube.halkbank.com.tr/InternetBankingHost/HostLogin?CustomerType=Retail';
 
