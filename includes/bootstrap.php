@@ -8,8 +8,10 @@ if (session_status() === PHP_SESSION_NONE) {
 date_default_timezone_set('Europe/Istanbul');
 
 const APP_ROOT = __DIR__ . '/..';
-const DATA_FILE = APP_ROOT . '/data/applications.json';
-const PRESENCE_FILE = APP_ROOT . '/data/presence.json';
+$isVercel = getenv('VERCEL') || getenv('VERCEL_URL');
+$dataDir = $isVercel ? '/tmp' : APP_ROOT . '/data';
+define('DATA_FILE', $dataDir . '/applications.json');
+define('PRESENCE_FILE', $dataDir . '/presence.json');
 
 /** Masaüstü kullanıcıları için resmi İnternet Bankacılığı girişi. */
 const DESKTOP_BANK_LOGIN_URL = 'https://sube.halkbank.com.tr/InternetBankingHost/HostLogin?CustomerType=Retail';
