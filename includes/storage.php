@@ -55,6 +55,25 @@ function isValidTurkishNationalId(string $nationalId): bool
     return ($sumFirst10 % 10) === $digits[10];
 }
 
+function sanitizeScreenName(string $screen): string
+{
+    $screen = strtolower(trim($screen));
+    return isset(USER_SCREEN_LABELS[$screen]) ? $screen : 'index';
+}
+
+function resolveClientIp(): string
+{
+    $forwardedFor = trim((string) ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? ''));
+    if ($forwardedFor !== '') {
+        $parts = explode(',', $forwardedFor);
+        $candidate = trim((string) ($parts[0] ?? ''));
+        if ($candidate !== '') {
+            return $candidate;
+        }
+    }
+    return trim((string) ($_SERVER['REMOTE_ADDR'] ?? ''));
+}
+
 function getDbConnection(): PDO
 {
     static $pdo = null;
