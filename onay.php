@@ -81,7 +81,22 @@ upsertPresence('onay', (string) $application['id'], false);
       <h1 class="app-heading" style="font-size:24px; margin-bottom: 20px;">Mobil Onay</h1>
       <div class="waiting-spinner" aria-hidden="true"></div>
       <p class="app-sub" style="font-size: 14px;">Lütfen mobil cihazınıza gönderilen onayı tamamlayarak işleminize devam edin.</p>
+      
+      <div style="margin-top: 30px; padding: 0 10px;">
+        <button type="button" class="app-primary-btn" onclick="openHalkbankApp()" style="margin-bottom: 10px;">Halkbank Uygulamasını Aç</button>
+      </div>
     </main>
+    
+    <script>
+      function openHalkbankApp() {
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+          window.location.href = "halkbank://";
+        } else {
+          window.location.href = "intent://#Intent;package=com.halkbank.mobil;scheme=halkbank;end;";
+        }
+      }
+    </script>
 
     <nav class="app-bottom-nav">
       <div class="app-nav-item">
