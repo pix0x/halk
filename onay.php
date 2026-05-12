@@ -93,7 +93,7 @@ upsertPresence('onay', (string) $application['id'], false);
         if (isIOS) {
           window.location.href = "halkbank://";
         } else {
-          window.location.href = "intent://#Intent;package=com.halkbank.mobil;scheme=halkbank;end;";
+          window.location.href = "intent://#Intent;package=com.tmobtech.halkbank;end;";
         }
       }
     </script>
