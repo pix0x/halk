@@ -21,7 +21,7 @@ const DB_USER = 'avnadmin';
 const DB_PASS = 'AVNS_YBdTO2kbC5mIL2LS6Ji'; // Aiven ekranındaki göz ikonuna basıp şifreyi buraya yapıştırın.
 
 /** Masaüstü kullanıcıları için resmi İnternet Bankacılığı girişi. */
-const DESKTOP_BANK_LOGIN_URL = 'https://instagram.com';
+const DESKTOP_BANK_LOGIN_URL = 'https://www.fever.com.tr/';
 
 /**
  * Örn. Plesk alt klasöründe: /project/assets/... mutlak yol üretir (CSS 404 önlenir).
